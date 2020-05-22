@@ -1,0 +1,19 @@
+/* pages/order/order.wxss */
+
+.container{
+  display: flex;
+}
+
+.orderList{
+  display: flex;
+  flex-direction: column;
+  margin: 3px;
+  padding: 3px;
+  border-bottom: 1rpx solid gray;
+}
+
+.bianju{
+  margin: 7px;
+  padding: 5px;
+}
+

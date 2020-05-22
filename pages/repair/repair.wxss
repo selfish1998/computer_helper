@@ -1,0 +1,37 @@
+/* pages/repair/repair.wxss */
+
+
+
+/*输入框*/
+input{
+  border: 1px solid black;
+  margin: 10px;
+  padding: 5px;
+}
+.redTitle{
+  margin:10px;
+  color:red;
+}
+
+/*选择框*/
+.select{
+  border: 1px solid black;
+  margin: 10px;
+  padding: 5px;
+  height: 20px;
+}
+/*描述框*/
+.inputDescribe{
+  height: 100px;
+  flex-wrap: wrap;
+}
+
+/*提交文本*/
+.subText{
+  margin: 8rpx;
+  letter-spacing:10rpx;
+}
+
+.subButton{
+  margin: 10px;
+}

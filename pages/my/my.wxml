@@ -1,0 +1,12 @@
+<!--个人中心-->
+<view id="myLogin">
+  <block wx:if='{{isLogin}}'>
+    <image id="myIcon" src="{{src}}"></image>
+    <text id="nickName">{{nickName}}</text>
+  </block>
+  
+  <button wx:else open-type="getUserInfo" bindgetuserinfo="getMyInfo">点击登录</button>
+</view>
+  <navigator url="{{order}}">
+    <button type="default"  >我的维修单</button>
+  </navigator>

@@ -1,0 +1,44 @@
+<!--pages/repair/repair.wxml-->
+
+<form bindsubmit="submitForm"> 
+  <view class="redTitle">标题</view>
+  <input type="text" confirm-type="done" placeholder="标题" value="{{form.title}}" bindinput="input"  name='title'></input>
+
+<!--问题描述-->
+  <view class="redTitle">故障描述</view>
+  <input class="inputDescribe" type="text" confirm-type="done" 
+  placeholder="描述得越详细，我们解决得越快"></input>
+
+<!--维修时间地点-->
+  <view class="redTitle">预约维修时间、地点</view>
+
+  <picker mode="date" value="{{date}}" start="2019-09-01" end="2021-09-01" bindchange="bindDateChange">
+    <view class="select">
+      日期: {{date}}
+    </view>
+  </picker>
+
+  <picker bindchange="bindPlaceChange" range="{{place}}">
+    <view class="select">
+      校区：{{place[pindex]}}
+    </view>
+  </picker>
+  <picker wx:if="{{pindex == 0}}" bindchange="bindPickerChange" value="{{index}}" range="{{array0}}">
+    <view class="select">
+      楼栋：{{array0[index]}}
+    </view>
+  </picker>
+  <picker wx:if="{{pindex == 1}}" bindchange="bindPickerChange" value="{{index}}" range="{{array1}}">
+    <view class="select">
+      楼栋：{{array1[index]}}
+    </view>
+  </picker>
+  <input class="select" placeholder="房间号：" placeholder-style="color:black" value="{{form.room}}" name='room'></input>
+  <input class="select" placeholder="手机号码：" placeholder-style="color:black" value="{{form.tel}}" name='tel'></input>
+
+<!--按钮表单-->
+  <button class="subButton" bindtap="uploadimg">点击上传图片</button>
+  <button class="subButton" type="primary" form-type="submit" bindtap="" >
+  <text class="subText">提交</text>
+  </button>
+</form>

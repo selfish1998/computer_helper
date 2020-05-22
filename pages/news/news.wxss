@@ -1,0 +1,30 @@
+/* pages/index/news/news.wxss */
+
+/*整体*/
+.container{
+  padding: 15rpx;
+  text-align: center
+}
+/*新闻标题*/
+.title{
+  font-size: 14pt;
+  line-height: 80rpx
+}
+/*新闻图片*/
+.poster{
+  width: 100%
+}
+/*新闻内容*/
+.content{
+  text-align: left;
+  font-size: 12pt;
+  line-height: 60rpx
+}
+/*日期*/
+.add_date{
+  font-size: 12pt;
+  text-align: right;
+  line-height: 30rpx;
+  margin-right: 25rpx;
+  margin-top: 20rpx;
+}

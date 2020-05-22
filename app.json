@@ -1,0 +1,44 @@
+{
+  "pages": [
+    "pages/test/test",
+    "pages/my/my",
+    "pages/index/index",
+    "pages/repair/repair",
+    "pages/logs/logs",
+    "pages/order/order",
+    
+    "pages/news/news"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#328eeb",
+    "navigationBarTitleText": "电脑帮",
+    "navigationBarTextStyle": "black",
+    "backgroundColorTop": "#fff"
+  },
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#000",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "pages/images/HOME.png",
+        "selectedIconPath": "pages/images/HOME1.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/repair/repair",
+        "iconPath": "pages/images/repair.png",
+        "selectedIconPath": "pages/images/repair1.png",
+        "text": "维修"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "pages/images/VIP.png",
+        "selectedIconPath": "pages/images/VIP1.png",
+        "text": "个人中心"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

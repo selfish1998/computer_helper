@@ -1,0 +1,23 @@
+<!--pages/index/news/news.wxml-->
+<view class="container">
+  <!--新闻标题-->
+  <view class="title">
+    {{article.title}}
+  </view>
+
+  <!--新闻图片-->
+  <view class="poster">
+    <image mode="widthFix" src="{{article.poster}}"></image>
+  </view>
+
+
+  <!--新闻正文-->
+  <view class="content">
+    {{article.content}}
+  </view>
+
+  <!--底部功能拓展-->
+  <view class="add_date">
+  {{article.add_date}}
+  </view>
+</view>

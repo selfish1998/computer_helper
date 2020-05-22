@@ -1,0 +1,7 @@
+<view>
+  <view wx:for="{{newsdata}}" wx:key="newsdata">
+    <view>{{item.id}}</view>
+    <view>{{item.title}}</view>
+    <image src="{{item.poster}}"></image>
+  </view>
+</view>

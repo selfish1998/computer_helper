@@ -1,0 +1,33 @@
+<!--pages/order/order.wxml-->
+<text class="">维修订单页</text>
+<view class="bianju">
+<!--订单信息-->
+  <view class="orderList" wx:for="{{orderList}}" wx:for-item="order" wx:key="{{orderList.r_id}}">
+  <view>
+    订单编号：{{order.r_id}}
+  </view>
+  <view>
+    标题：{{order.r_title}}
+  </view>
+  <view>
+    描述：{{order.r_describe}}
+  </view>
+  <view>
+    日期：{{order.r_date}}
+  </view>
+  <view>
+    校区：{{order.r_place}}
+  </view>
+  <view>
+    栋：{{order.r_build}}
+  </view>
+  <view>
+    房间号：{{order.r_room}}
+  </view>
+  <view>
+    手机号码：{{order.r_tel}}
+  </view>
+  <button class="orderButton" bindtap="selectPoint">评价</button>
+  <image wx:if='{{point}}' src="../images/point1.png"></image>
+  </view>
+</view>
