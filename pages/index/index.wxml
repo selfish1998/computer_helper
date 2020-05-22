@@ -10,11 +10,11 @@
 </swiper>
 <!-- 新闻列表-->
 <view id='news-list'>
-  <view class="list-item" wx:for="{{newsList}}" wx:for-item="news" wx:key="{{news.id}}">
-    <image src='{{news.poster}}'/>
-      <navigator url='../news/news?id={{news.id}}'  >
+  <view class="list-item" wx:for="{{newsData}}"wx:key="newsData">
+    <image src='{{item.poster}}'/>
+      <navigator url='../news/news?id={{item.id}}'  >
       <text class="news-titlt" >
-      ⚪{{news.title}}——{{news.add_date}}
+      ⚪{{item.title}}——{{item.add_date}}
       </text>
       </navigator>
   </view>

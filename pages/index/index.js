@@ -25,6 +25,23 @@ Page({
 
   onLoad: function () {
     
+    //连接访问数据库
+    var that = this;
+    var list = [];
+    wx.request({
+      url: 'http://127.0.0.1:8080/', //仅为示例，并非真实的接口地址
+      data: {
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        list = res.data;
+        that.setData({ newsData: list })
+      }
+    })
+
+    return list;
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -52,8 +69,8 @@ Page({
       })
     }
 
-    let list = common.getNewsList()
-    this.setData({ newsList:list })
+    // let list = common.getNewsList()
+    // this.setData({ newsList:list })
   },
   getUserInfo: function(e) {
     console.log(e)

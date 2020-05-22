@@ -13,11 +13,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let id=options.id;
-    let result=common.getNews(id)
-    if(result.code=='200'){
-      this.setData({article:result.news})
-    }
+    let id=options.id-1;
+    console.log(id);
+    // let result=common.getNews(id)
+    // if(result.code=='200'){
+    //   this.setData({article:result.news})
+    // }
+    /*---------------------------------待封装------------------------------------ */    
+    var that = this;
+    var list = [];
+    wx.request({
+      url: 'http://127.0.0.1:8080/', //仅为示例，并非真实的接口地址
+      data: {
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        list = res.data;
+        that.setData({ article: list[id] })
+      }
+      /*------------------------------------------------------------------------ */
+    })
   },
 
   /**

@@ -1,6 +1,12 @@
 //app.js
+import { promisifyAll, promisify } from 'miniprogram-api-promise';
 App({
-
+  // globalData: {
+  //   userInfo: null,
+  //   loginCode: null,
+  //   version: '1.0.0',
+  //   host: 'https://**',
+  // },
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
