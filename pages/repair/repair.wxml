@@ -1,36 +1,38 @@
 <!--pages/repair/repair.wxml-->
 
 <form bindsubmit="submitForm"> 
+
+<!--维修标题-->
   <view class="redTitle">标题</view>
-  <input type="text" confirm-type="done" placeholder="标题" value="{{form.title}}" bindinput="input"  name='title'></input>
+  <input type="text" confirm-type="done" placeholder="标题" value="{{form.title}}"   name='title'></input>
 
 <!--问题描述-->
   <view class="redTitle">故障描述</view>
-  <input class="inputDescribe" type="text" confirm-type="done" 
+  <input class="inputDescribe" type="text" confirm-type="done" value="{{form.describe}}" name='describe' 
   placeholder="描述得越详细，我们解决得越快"></input>
 
 <!--维修时间地点-->
   <view class="redTitle">预约维修时间、地点</view>
 
-  <picker mode="date" value="{{date}}" start="2019-09-01" end="2021-09-01" bindchange="bindDateChange">
+  <picker mode="date" value="{{date}}" start="2020-05-01" end="2021-09-01" bindchange="bindDateChange" name="repair_time">
     <view class="select">
       日期: {{date}}
     </view>
   </picker>
 
-  <picker bindchange="bindPlaceChange" range="{{place}}">
+  <picker bindchange="bindPlaceChange" range="{{place}}" name="school_place">
     <view class="select">
       校区：{{place[pindex]}}
     </view>
   </picker>
-  <picker wx:if="{{pindex == 0}}" bindchange="bindPickerChange" value="{{index}}" range="{{array0}}">
+  <picker wx:if="{{pindex == 0}}" bindchange="bindPickerChange" value="{{index}}" range="{{array_dongqu}}" name="place_num" >
     <view class="select">
-      楼栋：{{array0[index]}}
+      楼栋：{{array_dongqu[index]}}
     </view>
   </picker>
-  <picker wx:if="{{pindex == 1}}" bindchange="bindPickerChange" value="{{index}}" range="{{array1}}">
+  <picker wx:if="{{pindex == 1}}" bindchange="bindPickerChange" value="{{index}}" range="{{array_huajiang}}" name="place_num">
     <view class="select">
-      楼栋：{{array1[index]}}
+      楼栋：{{array_huajiang[index]}}
     </view>
   </picker>
   <input class="select" placeholder="房间号：" placeholder-style="color:black" value="{{form.room}}" name='room'></input>

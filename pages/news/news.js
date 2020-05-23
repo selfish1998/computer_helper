@@ -1,5 +1,4 @@
 // pages/index/news/news.js
-var common = require('../../utils/common.js');
 Page({
 
   /**
@@ -14,11 +13,7 @@ Page({
    */
   onLoad: function (options) {
     let id=options.id-1;
-    console.log(id);
-    // let result=common.getNews(id)
-    // if(result.code=='200'){
-    //   this.setData({article:result.news})
-    // }
+
     /*---------------------------------待封装------------------------------------ */    
     var that = this;
     var list = [];

@@ -1,6 +1,5 @@
 //index.js
 //获取应用实例
-var common = require('../../utils/common.js');
 
 const app = getApp()
 Page({
@@ -24,7 +23,7 @@ Page({
 
 
   onLoad: function () {
-    
+
     //连接访问数据库
     var that = this;
     var list = [];

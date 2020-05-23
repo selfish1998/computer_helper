@@ -12,6 +12,13 @@ swiper image{
   padding: 15rpx;
 }
 
+#date-font{
+  display:flex;
+  flex-direction: row;
+  justify-content:  flex-end;
+  font-size:12px;
+}
+
 .list-item{
   display: flex;
   flex-direction: row;
