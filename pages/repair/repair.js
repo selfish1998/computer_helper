@@ -89,7 +89,7 @@ Page({
     wx.request({
       url: 'http://127.0.0.1:7777/', //仅为示例，并非真实的接口地址
       data: {
-        title:e.detail.value.title,
+        title:e.detail.value.title, 
         describe: e.detail.value.describe,
         repair_time: e.detail.value.repair_time,
         school_place: e.detail.value.school_place,
@@ -104,6 +104,7 @@ Page({
       },
       success(res) {
         console.log(res.data)
+        
       }
     })
     this.showModal({
