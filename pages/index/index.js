@@ -5,12 +5,7 @@ const app = getApp()
 Page({
   data: {
     id:'',
-    //幻灯片图片
-    swiperImg:[
-      { src:'../images/123.jpg'},
-      { src:'../images/456.jpg'},
-      { src:'../images/789.jpg'},
-    ],
+    
   },
 
 

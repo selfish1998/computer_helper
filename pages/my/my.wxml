@@ -7,6 +7,7 @@
   
   <button wx:else open-type="getUserInfo" bindgetuserinfo="getMyInfo">点击登录</button>
 </view>
-  <navigator url="{{order}}">
-    <button type="default"  >我的维修单</button>
-  </navigator>
+
+<navigator wx-if="{{isLogin}}" url="{{order}}">
+  <button type="default"  >我的维修单</button>
+</navigator>

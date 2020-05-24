@@ -1,4 +1,7 @@
 // pages/my/my.js
+
+const app = getApp()
+
 Page({
 
   /**
@@ -11,13 +14,30 @@ Page({
   },
 
 
+
   getMyInfo:function(e){
     let info = e.detail.userInfo;
+    wx.login({
+      success(res) {
+        if (res.code) {
+          //发起网络请求
+          wx.request({
+            url: 'http://127.0.0.1:9090/',
+            data: {
+              code: res.code
+            }
+          })
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
+    })
     this.setData({
       isLogin:true,
       src:info.avatarUrl,
       nickName:info.nickName
     })
+    getApp().globalData.isLogin = true;
   },
 
 
@@ -27,7 +47,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**

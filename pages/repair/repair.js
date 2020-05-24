@@ -1,5 +1,4 @@
 // pages/repair/repair.js
-
 //引入表单验证文件
 import WxValidate from '../../utils/WxValidate.js';
 
@@ -16,17 +15,18 @@ Page({
     //初值
     index: 0,
     pindex:0,
-    date: '2019-09-01',
+    date: '2020-05-01',
     form: {
       title:'',
       room:'',
       tel:'',
-      describe:''
+      describe:'',
+      number: '',
+      name: ''
     },
     repair:[{
       
-    }
-    ]
+    }]
     
   },
   /**
@@ -34,18 +34,23 @@ Page({
   */
 
   onLoad: function (options) {
-    this.initValidate()
+    this.initValidate();
+    if (getApp().globalData.isLogin == null) {
+      wx.showToast({
+        title: '请先到个人中心登录！',
+        icon: 'none',
+        duration: 2000
+      })
+    }
   },
 
   //宿舍楼
   bindPlaceChange: function (e) {
-    console.log('区值', e.detail.value)
     this.setData({
       pindex: e.detail.value
     })
   },
   bindPickerChange: function (e) {
-    console.log('楼值', e.detail.value)
     this.setData({
       index: e.detail.value
     })
@@ -60,18 +65,50 @@ Page({
 
   
   submitForm: function (e) {
-
-    const params = e.detail.value
+    if (getApp().globalData.isLogin == null) {
+      wx.showToast({
+        title: '请先到个人中心登录再提交维修单！',
+        icon: 'none',
+        duration: 2500
+      })
+      return
+    }
+    
+    const params = e.detail.value;
     //校验表单
     if (!this.WxValidate.checkForm(e)) {
       const error = this.WxValidate.errorList[0]
       this.showModal(error)
       return false
     }
+
+    console.log('form发生了submit事件，携带的数据为：', e.detail.value);
+    console.log(e.detail.value.school_place);
+
+    //向后端提交维修数据
+    wx.request({
+      url: 'http://127.0.0.1:7777/', //仅为示例，并非真实的接口地址
+      data: {
+        title:e.detail.value.title,
+        describe: e.detail.value.describe,
+        repair_time: e.detail.value.repair_time,
+        school_place: e.detail.value.school_place,
+        place_num: e.detail.value.place_num,
+        room: e.detail.value.room,
+        tel: e.detail.value.tel,
+        number: e.detail.value.number,
+        name: e.detail.value.name
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        console.log(res.data)
+      }
+    })
     this.showModal({
       msg:'提交成功'
     })
-    console.log('form发生了submit事件，携带的数据为：', e.detail.value)
     
   },
 
@@ -84,9 +121,17 @@ Page({
       describe: {
         required: true,
       },
+      name: {
+        required: true,
+      },
       tel: {
         required: true,
         tel: true,
+      },
+      number: {
+        required: true,
+        number: true,
+        maxlength:10
       },
       room: {
         required: true,
@@ -103,9 +148,16 @@ Page({
       describe: {
         required: '请输入故障描述',
       },
+      name: {
+        required: '请输入姓名',
+      },
       tel: {
         required: '请输入手机号',
         tel: '请输入正确的手机号',
+      },
+      number: {
+        required: '请输入学号',
+        number: '请输入正确的学号',
       },
       room: {
         required: '请输入房间号',
@@ -159,14 +211,14 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**
@@ -187,7 +239,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    
   },
 
   /**
@@ -201,7 +253,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    
   },
 
 

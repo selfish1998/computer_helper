@@ -20,7 +20,7 @@
     </view>
   </picker>
 
-  <picker bindchange="bindPlaceChange" range="{{place}}" name="school_place">
+  <picker mode="selector" value="0" bindchange="bindPlaceChange" range="{{place}}" name="school_place">
     <view class="select">
       校区：{{place[pindex]}}
     </view>
@@ -30,16 +30,19 @@
       楼栋：{{array_dongqu[index]}}
     </view>
   </picker>
-  <picker wx:if="{{pindex == 1}}" bindchange="bindPickerChange" value="{{index}}" range="{{array_huajiang}}" name="place_num">
+  <picker wx:if="{{pindex == 1}}"  bindchange="bindPickerChange" value="{{index}}" range="{{array_huajiang}}" name="place_num">
     <view class="select">
       楼栋：{{array_huajiang[index]}}
     </view>
   </picker>
   <input class="select" placeholder="房间号：" placeholder-style="color:black" value="{{form.room}}" name='room'></input>
   <input class="select" placeholder="手机号码：" placeholder-style="color:black" value="{{form.tel}}" name='tel'></input>
+  <input class="select" placeholder="学号：" placeholder-style="color:black" value="{{form.number}}" name='number'></input>
+  <input class="select" placeholder="姓名：" placeholder-style="color:black" value="{{form.name}}" name='name'></input>
 
 <!--按钮表单-->
   <button class="subButton" bindtap="uploadimg">点击上传图片</button>
+  
   <button class="subButton" type="primary" form-type="submit" bindtap="" >
   <text class="subText">提交</text>
   </button>
