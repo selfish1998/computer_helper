@@ -42,8 +42,10 @@
 
 <!--按钮表单-->
   <button class="subButton" bindtap="uploadimg">点击上传图片</button>
-  
-  <button class="subButton" type="primary" form-type="submit" bindtap="" >
+  <view wx:for="{{source}}">
+    <image mode="aspectFit" src="{{item.path}}"></image>
+  </view>
+  <button class="subButton" type="primary" form-type="submit" >
   <text class="subText">提交</text>
   </button>
 </form>

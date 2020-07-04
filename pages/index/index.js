@@ -23,7 +23,7 @@ Page({
     var that = this;
     var list = [];
     wx.request({
-      url: 'http://127.0.0.1:8080/', //仅为示例，并非真实的接口地址
+      url: 'http://127.0.0.1:9090/newslist', //仅为示例，并非真实的接口地址
       header: {
         'content-type': 'application/json' // 默认值
       },

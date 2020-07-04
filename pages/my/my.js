@@ -22,7 +22,7 @@ Page({
         if (res.code) {
           //发起网络请求
           wx.request({
-            url: 'http://127.0.0.1:9090/',
+            url: 'http://127.0.0.1:9090/login',
             data: {
               code: res.code
             }

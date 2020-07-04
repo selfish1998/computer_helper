@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    img:'',
     //楼栋
     place: ['金鸡岭校区（东区）', '尧山校区（花江）'],
     array_dongqu: ['13#(金鸡岭校区)', '15#(金鸡岭校区)', '16#(金鸡岭校区)', '17#(金鸡岭校区)', '18#(金鸡岭校区)', '19#(金鸡岭校区)', '20#(金鸡岭校区)', '22#(金鸡岭校区)', '23#(金鸡岭校区)', '24#(金鸡岭校区)'],
@@ -87,7 +88,7 @@ Page({
 
     //向后端提交维修数据
     wx.request({
-      url: 'http://127.0.0.1:7777/', //仅为示例，并非真实的接口地址
+      url: 'http://127.0.0.1:9090/addlist', //仅为示例，并非真实的接口地址
       data: {
         title:e.detail.value.title, 
         describe: e.detail.value.describe,
@@ -173,33 +174,36 @@ Page({
   //相机
   uploadimg: function () {
     var that = this;
+    
     wx.chooseImage({  //从本地相册选择图片或使用相机拍照
-      count: 1, // 默认9
+      count: 9, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
 
       success: function (res) {
-        //console.log(res)
+        
         //前台显示
         that.setData({
-          source: res.tempFilePaths
+          source: res.tempFiles
         })
-
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        var tempFilePaths = res.tempFilePaths
-        wx.uploadFile({
-          url: 'http://www.website.com/home/api/uploadimg',
-          filePath: tempFilePaths[0],
-          name: 'file',
-
-          success: function (res) {
-            //打印
-            console.log(res.data)
-          }
-        })
-
+        var tempFilePaths = res.tempFilePaths;
+        that.data.img = res.tempFilePaths;
+        for(var i = 0;i<tempFilePaths.length;i++){
+          // console.log(tempFilePaths[i])
+          wx.uploadFile({
+            url: 'http://127.0.0.1:9090/saveimage',
+            filePath: tempFilePaths[i],
+            name: 'file',
+            success: function (res) {
+              //打印
+              console.log(res.data)
+            }
+          })
+        }
       }
     })
+    console.log(that.data.img)
   },
 
   showModal(error) {
